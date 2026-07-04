@@ -93,7 +93,7 @@ function App() {
                 <a href="https://github.com/ajuy666" target="_blank" rel="noopener noreferrer" className="social-icon-btn">{githubIcon} GitHub</a>
                 <a href="https://www.linkedin.com/in/if-azhar-havis-78a5b23a0/" target="_blank" rel="noopener noreferrer" className="social-icon-btn">{linkedinIcon} LinkedIn</a>
                 <a href="https://www.instagram.com/azharhv?igsh=ZjhhdmQ1dGJuemdw" target="_blank" rel="noopener noreferrer" className="social-icon-btn">{instagramIcon} Instagram</a>
-                <a href="mailto:azharhavis@example.com" className="social-icon-btn">{emailIcon} Email</a>
+                <a href="mailto:azharhavis02@gmail.com" className="social-icon-btn">{emailIcon} Email</a>
               </div>
             </div>
           </header>
