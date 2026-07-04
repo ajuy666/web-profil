@@ -1,0 +1,619 @@
+/* ==========================================================================
+   1. RESET GLOBAL & VARIABEL
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.justify-text {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* ==========================================================================
+   2. PENGATURAN TEMA (GELAP & TERANG PREMIUM)
+   ========================================================================== */
+.dark-theme {
+  background-color: #0b0f19;
+  color: #94a3b8;
+  min-height: 100vh;
+}
+
+.light-theme {
+  background-color: #f8fafc;
+  color: #475569;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   3. NAVIGATION BAR (GLASSMORPHISM EFFECT)
+   ========================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 18px 0;
+  border-bottom: 1px solid transparent;
+}
+
+.dark-theme .navbar { 
+  background-color: rgba(11, 15, 25, 0.75); 
+  border-color: rgba(30, 41, 59, 0.7); 
+}
+
+.light-theme .navbar { 
+  background-color: rgba(248, 250, 252, 0.75); 
+  border-color: rgba(226, 232, 240, 0.7); 
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 6px 0;
+  position: relative;
+}
+
+.dark-theme .nav-link { color: #94a3b8; }
+.light-theme .nav-link { color: #64748b; }
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, #f59e0b, #eab308); 
+  transform: scaleX(0);
+  transform-origin: bottom center;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover {
+  color: #f59e0b;
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.cv-link {
+  background: transparent;
+  border: 1.5px solid #f59e0b !important;
+  color: #f59e0b !important;
+  padding: 5px 16px !important;
+  border-radius: 20px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cv-link:hover {
+  background: linear-gradient(135deg, #f59e0b 0%, #eab308 100%) !important;
+  color: #0b0f19 !important;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  text-shadow: none;
+  transform: translateY(-1px);
+}
+
+.cv-link::after {
+  display: none;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: 1px solid;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.dark-theme .toggle-btn { color: #3b82f6; border-color: rgba(59, 130, 246, 0.4); background: rgba(59, 130, 246, 0.05); }
+.light-theme .toggle-btn { color: #1e293b; border-color: #cbd5e1; background: #ffffff; }
+.toggle-btn:hover { transform: scale(1.05); }
+
+/* ==========================================================================
+   4. HERO SECTION & SOSIAL MEDIA DENGAN IKON SVG
+   ========================================================================== */
+.hero-section {
+  padding: 80px 0 100px 0;
+  text-align: center;
+}
+
+.avatar-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 25px;
+}
+
+.profile-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #3b82f6;
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
+}
+
+.hero-section h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+
+.dark-theme .hero-section h1 { color: #f8fafc; }
+.light-theme .hero-section h1 { color: #0f172a; }
+
+.typing-box {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.txt-gradient {
+  background: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cursor { 
+  animation: blink 0.8s infinite; 
+  color: #3b82f6; 
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+.hero-subtitle {
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Tombol Sosial Media Berikon */
+.social-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.social-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid;
+}
+
+.dark-theme .social-icon-btn { color: #cbd5e1; border-color: #334155; background: #111827; }
+.light-theme .social-icon-btn { color: #475569; border-color: #cbd5e1; background: #ffffff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+.svg-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor; /* Warna ikon otomatis mengikuti warna teks */
+}
+
+.social-icon-btn:hover { 
+  transform: translateY(-3px); 
+  border-color: #f59e0b; 
+  color: #f59e0b; 
+}
+
+/* ==========================================================================
+   5. SECTION HEADERS & ABOUT ME
+   ========================================================================== */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.section-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  border-left: 4px solid #3b82f6;
+  padding-left: 12px;
+}
+
+.dark-theme .section-header h2 { color: #f8fafc; }
+.light-theme .section-header h2 { color: #0f172a; }
+
+.about-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 800px;
+}
+
+.about-text strong { color: #3b82f6; }
+
+/* ==========================================================================
+   6. SKILLS GRID SYSTEM
+   ========================================================================== */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.skill-category {
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid;
+}
+
+.dark-theme .skill-category { background: #111827; border-color: #1e293b; }
+.light-theme .skill-category { background: #ffffff; border-color: #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+
+.skill-category h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  border-bottom: 2px solid #3b82f6;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.dark-theme .skill-category h3 { color: #f8fafc; }
+.light-theme .skill-category h3 { color: #1e293b; }
+
+.skills-sub-group h4 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #3b82f6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.light-theme .skills-sub-group h4 { color: #2563eb; }
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-badge {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid;
+}
+
+.dark-theme .skill-badge { background: #1e293b; border-color: #334155; color: #cbd5e1; }
+.light-theme .skill-badge { background: #f1f5f9; border-color: #e2e8f0; color: #475569; }
+
+.skill-category:hover { 
+  transform: translateY(-4px); 
+  border-color: #3b82f6; 
+}
+
+/* ==========================================================================
+   7. SHOWCASE CARD PREMIUM (PORTFOLIO PROYEK)
+   ========================================================================== */
+.showcase-card {
+  border-radius: 16px;
+  border: 1px solid;
+  overflow: hidden;
+  position: relative;
+  padding: 35px;
+}
+
+.dark-theme .showcase-card { background: linear-gradient(145deg, #111827 0%, #0f172a 100%); border-color: #1e293b; }
+.light-theme .showcase-card { background: #ffffff; border-color: #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+
+.project-tag {
+  font-size: 0.75rem;
+  font-family: monospace;
+  color: #3b82f6;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.showcase-card h3 {
+  font-size: 1.8rem;
+  margin: 5px 0 10px 0;
+}
+
+.dark-theme .showcase-card h3 { color: #f8fafc; }
+.light-theme .showcase-card h3 { color: #0f172a; }
+
+.company {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #10b981;
+  margin-bottom: 20px;
+}
+
+.project-desc {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.card-techs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.card-techs span { color: #a855f7; }
+
+.btn-premium {
+  display: inline-block;
+  background: #3b82f6;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn-premium:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.showcase-card:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.1);
+}
+
+/* ==========================================================================
+   8. HALAMAN CV DIGITAL & DESAIN CETAK KERTAS FORMAL
+   ========================================================================== */
+.nav-btn-link {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #3b82f6;
+  cursor: pointer;
+  padding: 6px 0;
+  margin-right: 15px;
+  font-family: inherit;
+}
+
+.cv-page-container {
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+
+.cv-header-action {
+  text-align: right;
+  margin-bottom: 25px;
+}
+
+.print-btn {
+  background: linear-gradient(135deg, #f59e0b 0%, #eab308 100%) !important;
+  color: #0b0f19 !important;
+  border: none;
+  cursor: pointer;
+}
+
+.cv-paper {
+  background: #ffffff;
+  color: #1e293b;
+  padding: 50px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.light-theme .cv-paper {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.cv-top {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.cv-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #f59e0b;
+}
+
+.cv-info-side h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+}
+
+.cv-info-side h3 {
+  font-size: 1.1rem;
+  color: #f59e0b;
+  margin-top: 2px;
+}
+
+.cv-meta {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 8px;
+}
+
+.cv-social-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.cv-icon-link {
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cv-icon-link .svg-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.cv-icon-link:hover {
+  color: #f59e0b;
+}
+
+.cv-divider {
+  margin: 30px 0;
+  border: 0;
+  border-top: 2px solid #e2e8f0;
+}
+
+.cv-section {
+  margin-bottom: 25px;
+}
+
+.cv-section h3 {
+  font-size: 1.15rem;
+  color: #0f172a;
+  border-bottom: 2px solid #f59e0b;
+  padding-bottom: 4px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cv-section p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.cv-item {
+  margin-bottom: 15px;
+}
+
+.cv-item-title {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: #0f172a;
+}
+
+.cv-company {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #10b981;
+  margin-bottom: 6px;
+}
+
+.cv-section ul {
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+.cv-section li {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 4px;
+}
+
+.cv-link-inline {
+  color: #f59e0b;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cv-link-inline:hover {
+  text-decoration: underline;
+}
+
+.cv-active {
+  background: linear-gradient(135deg, #f59e0b 0%, #eab308 100%) !important;
+  color: #0b0f19 !important;
+}
+
+/* ==========================================================================
+   9. FOOTER & ATURAN CETAK (PRINT SETUP)
+   ========================================================================== */
+.footer {
+  text-align: center;
+  padding: 40px 0;
+  font-size: 0.85rem;
+  border-top: 1px solid;
+  margin-top: 40px;
+}
+
+.dark-theme .footer { background: #070a12; border-color: #1e293b; color: #475569; }
+.light-theme .footer { background: #f1f5f9; border-color: #e2e8f0; color: #94a3b8; }
+
+@media print {
+  .navbar, .cv-header-action, .footer, .toggle-btn {
+    display: none !important;
+  }
+  body, .dark-theme, .light-theme {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .cv-paper {
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  .svg-icon {
+    fill: #000000 !important;
+  }
+}
