@@ -50,7 +50,8 @@ function App() {
   const emailIcon = <svg className="svg-icon" viewBox="0 0 24 24"><path d="M12 12.713l-11.985-7.99c.045-.294.135-.572.272-.823l11.713 7.808 11.713-7.808c.137.251.227.529.272.823l-11.985 7.99zm-12 1.287v7c0 1.104.896 2 2 2h20c1.104 0 2-.896 2-2v-7l-12 8-12-8z"/></svg>;
 
   return (
-    <div className={darkMode ? "dark-theme" : "light-theme"}>
+    /* DIPASANG PENGIKAT KELAS PEMBUNGKUS DAN INLINE STYLE FULL SCREEN BERIKUT */
+    <div className={`theme-wrapper ${darkMode ? "dark-theme" : "light-theme"}`} style={{ width: '100%', minHeight: '100vh', margin: 0, padding: 0 }}>
       {/* Top Bar Navigation */}
       <nav className="navbar">
         <div className="nav-container">

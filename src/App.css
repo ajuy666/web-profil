@@ -9,8 +9,12 @@
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
 }
 
-html {
-  scroll-behavior: smooth;
+/* MEMAKSA BODY & HTML SINKRON PENUH TANPA SISA MARGIN PUTIH DI TEPI LAYAR */
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 .container {
@@ -31,6 +35,13 @@ html {
 /* ==========================================================================
    2. PENGATURAN TEMA (GELAP & TERANG PREMIUM)
    ========================================================================== */
+/* KELAS SELEKTOR UTAMA DIPAKSA LEBAR 100% UNTUK MELINDUNGI TAMPILAN HP DAN DESKTOP */
+.theme-wrapper, .dark-theme, .light-theme {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .dark-theme {
   background-color: #0b0f19;
   color: #94a3b8;
