@@ -1,13 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" style="margin: 0; padding: 0; width: 100%; background-color: #0b0f19;">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Mengunci viewport agar pas di layar HP tanpa margin palsu -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>web-profil</title>
   </head>
-  <body>
-    <div id="root"></div>
+  <!-- Menambahkan style margin, padding, dan background-color dasar gelap -->
+  <body style="margin: 0; padding: 0; width: 100%; background-color: #0b0f19;">
+    <div id="root" style="margin: 0; padding: 0; width: 100%;"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
