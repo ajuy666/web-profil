@@ -104,7 +104,7 @@ function App() {
               <h2>About Me</h2>
             </div>
             <p className="about-text justify-text">
-              I am a dedicated and adaptive **Fullstack Developer** with a solid foundation in web and mobile software engineering. I have hands-on experience in building complex software architectures, such as **Multi-Tenant** frameworks and cloud service systems, to optimize operational workflows.
+              I am a dedicated and adaptiv Fullstack Developer with a solid foundation in web and mobile software engineering. I have hands-on experience in building complex software architectures, such as Multi-Tenant frameworks and cloud service systems, to optimize operational workflows.
             </p>
           </section>
 
