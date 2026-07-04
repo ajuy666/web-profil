@@ -6,7 +6,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
 }
 
 html {
@@ -39,12 +39,12 @@ html {
 
 .light-theme {
   background-color: #f8fafc;
-  color: #475569;
+  color: #334155;
   min-height: 100vh;
 }
 
 /* ==========================================================================
-   3. NAVIGATION BAR (GLASSMORPHISM EFFECT)
+   3. NAVIGATION BAR (FIXED CONTRAST & RESPONSIVE DESIGN)
    ========================================================================== */
 .navbar {
   position: sticky;
@@ -52,19 +52,26 @@ html {
   z-index: 100;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  padding: 18px 0;
+  padding: 16px 0;
   border-bottom: 1px solid transparent;
 }
 
+/* Tema Gelap Navbar */
 .dark-theme .navbar { 
-  background-color: rgba(11, 15, 25, 0.75); 
+  background-color: rgba(11, 15, 25, 0.85); 
   border-color: rgba(30, 41, 59, 0.7); 
 }
+.dark-theme .nav-link { color: #94a3b8; }
+.dark-theme .nav-btn-link { color: #3b82f6; }
 
+/* Perbaikan Kontras Tema Terang Navbar (Mengatasi Teks Samar) */
 .light-theme .navbar { 
-  background-color: rgba(248, 250, 252, 0.75); 
-  border-color: rgba(226, 232, 240, 0.7); 
+  background-color: rgba(255, 255, 255, 0.9); 
+  border-color: rgba(226, 232, 240, 0.8);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
+.light-theme .nav-link { color: #334155; } /* Mengubah teks abu-abu tua agar tajam */
+.light-theme .nav-btn-link { color: #1d4ed8; } /* Mengubah tombol utama lebih kontras */
 
 .nav-container {
   display: flex;
@@ -78,20 +85,27 @@ html {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 25px;
+}
+
+.nav-btn-link {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px 0;
+  font-family: inherit;
 }
 
 .nav-link {
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 0.3px;
   padding: 6px 0;
   position: relative;
 }
-
-.dark-theme .nav-link { color: #94a3b8; }
-.light-theme .nav-link { color: #64748b; }
 
 .nav-link::after {
   content: '';
@@ -100,38 +114,45 @@ html {
   height: 2px;
   bottom: 0;
   left: 0;
-  background: linear-gradient(90deg, #f59e0b, #eab308); 
+  background: linear-gradient(90deg, #3b82f6, #a855f7); 
   transform: scaleX(0);
   transform-origin: bottom center;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s ease;
 }
 
 .nav-link:hover {
-  color: #f59e0b;
-  text-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+  color: #3b82f6;
+}
+
+.light-theme .nav-link:hover {
+  color: #1d4ed8;
 }
 
 .nav-link:hover::after {
   transform: scaleX(1);
 }
 
+/* Tombol CV Khusus */
 .cv-link {
   background: transparent;
-  border: 1.5px solid #f59e0b !important;
-  color: #f59e0b !important;
-  padding: 5px 16px !important;
+  border: 1.5px solid #3b82f6 !important;
+  color: #3b82f6 !important;
+  padding: 6px 16px !important;
   border-radius: 20px;
   font-family: inherit;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.cv-link:hover {
-  background: linear-gradient(135deg, #f59e0b 0%, #eab308 100%) !important;
-  color: #0b0f19 !important;
-  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-  text-shadow: none;
-  transform: translateY(-1px);
+.light-theme .cv-link {
+  border-color: #1d4ed8 !important;
+  color: #1d4ed8 !important;
+}
+
+.cv-link:hover, .cv-active {
+  background: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
 }
 
 .cv-link::after {
@@ -149,11 +170,11 @@ html {
 }
 
 .dark-theme .toggle-btn { color: #3b82f6; border-color: rgba(59, 130, 246, 0.4); background: rgba(59, 130, 246, 0.05); }
-.light-theme .toggle-btn { color: #1e293b; border-color: #cbd5e1; background: #ffffff; }
+.light-theme .toggle-btn { color: #334155; border-color: #cbd5e1; background: #ffffff; }
 .toggle-btn:hover { transform: scale(1.05); }
 
 /* ==========================================================================
-   4. HERO SECTION & SOSIAL MEDIA DENGAN IKON SVG
+   4. HERO SECTION & SOSIAL MEDIA 
    ========================================================================== */
 .hero-section {
   padding: 80px 0 100px 0;
@@ -172,7 +193,7 @@ html {
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid #3b82f6;
-  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
 }
 
 .hero-section h1 {
@@ -211,7 +232,6 @@ html {
   line-height: 1.6;
 }
 
-/* Tombol Sosial Media Berikon */
 .social-links {
   display: flex;
   justify-content: center;
@@ -232,18 +252,18 @@ html {
 }
 
 .dark-theme .social-icon-btn { color: #cbd5e1; border-color: #334155; background: #111827; }
-.light-theme .social-icon-btn { color: #475569; border-color: #cbd5e1; background: #ffffff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.light-theme .social-icon-btn { color: #475569; border-color: #cbd5e1; background: #ffffff; box-shadow: 0 2px 5px rgba(0,0,0,0.04); }
 
 .svg-icon {
   width: 18px;
   height: 18px;
-  fill: currentColor; /* Warna ikon otomatis mengikuti warna teks */
+  fill: currentColor;
 }
 
 .social-icon-btn:hover { 
   transform: translateY(-3px); 
-  border-color: #f59e0b; 
-  color: #f59e0b; 
+  border-color: #3b82f6; 
+  color: #3b82f6; 
 }
 
 /* ==========================================================================
@@ -272,8 +292,6 @@ html {
   max-width: 800px;
 }
 
-.about-text strong { color: #3b82f6; }
-
 /* ==========================================================================
    6. SKILLS GRID SYSTEM
    ========================================================================== */
@@ -290,7 +308,7 @@ html {
 }
 
 .dark-theme .skill-category { background: #111827; border-color: #1e293b; }
-.light-theme .skill-category { background: #ffffff; border-color: #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+.light-theme .skill-category { background: #ffffff; border-color: #e2e8f0; }
 
 .skill-category h3 {
   font-size: 1.2rem;
@@ -313,8 +331,6 @@ html {
   letter-spacing: 0.5px;
 }
 
-.light-theme .skills-sub-group h4 { color: #2563eb; }
-
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
@@ -332,11 +348,6 @@ html {
 .dark-theme .skill-badge { background: #1e293b; border-color: #334155; color: #cbd5e1; }
 .light-theme .skill-badge { background: #f1f5f9; border-color: #e2e8f0; color: #475569; }
 
-.skill-category:hover { 
-  transform: translateY(-4px); 
-  border-color: #3b82f6; 
-}
-
 /* ==========================================================================
    7. SHOWCASE CARD PREMIUM (PORTFOLIO PROYEK)
    ========================================================================== */
@@ -349,7 +360,7 @@ html {
 }
 
 .dark-theme .showcase-card { background: linear-gradient(145deg, #111827 0%, #0f172a 100%); border-color: #1e293b; }
-.light-theme .showcase-card { background: #ffffff; border-color: #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+.light-theme .showcase-card { background: #ffffff; border-color: #e2e8f0; }
 
 .project-tag {
   font-size: 0.75rem;
@@ -400,35 +411,17 @@ html {
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
 }
 
 .btn-premium:hover {
   background: #2563eb;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-}
-
-.showcase-card:hover {
-  border-color: #3b82f6;
-  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.1);
 }
 
 /* ==========================================================================
-   8. HALAMAN CV DIGITAL & DESAIN CETAK KERTAS FORMAL
+   8. HALAMAN CV DIGITAL FORMAL
    ========================================================================== */
-.nav-btn-link {
-  background: transparent;
-  border: none;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #3b82f6;
-  cursor: pointer;
-  padding: 6px 0;
-  margin-right: 15px;
-  font-family: inherit;
-}
-
 .cv-page-container {
   padding-top: 40px;
   padding-bottom: 60px;
@@ -440,8 +433,8 @@ html {
 }
 
 .print-btn {
-  background: linear-gradient(135deg, #f59e0b 0%, #eab308 100%) !important;
-  color: #0b0f19 !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%) !important;
+  color: #ffffff !important;
   border: none;
   cursor: pointer;
 }
@@ -451,13 +444,13 @@ html {
   color: #1e293b;
   padding: 50px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   max-width: 850px;
   margin: 0 auto;
 }
 
 .light-theme .cv-paper {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
   border: 1px solid #e2e8f0;
 }
 
@@ -472,19 +465,18 @@ html {
   height: 110px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #f59e0b;
+  border: 3px solid #3b82f6;
 }
 
 .cv-info-side h1 {
   font-size: 2.2rem;
   font-weight: 800;
   color: #0f172a;
-  letter-spacing: -0.5px;
 }
 
 .cv-info-side h3 {
   font-size: 1.1rem;
-  color: #f59e0b;
+  color: #3b82f6;
   margin-top: 2px;
 }
 
@@ -492,27 +484,6 @@ html {
   font-size: 0.85rem;
   color: #64748b;
   margin-top: 8px;
-}
-
-.cv-social-row {
-  display: flex;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.cv-icon-link {
-  color: #64748b;
-  display: inline-flex;
-  align-items: center;
-}
-
-.cv-icon-link .svg-icon {
-  width: 20px;
-  height: 20px;
-}
-
-.cv-icon-link:hover {
-  color: #f59e0b;
 }
 
 .cv-divider {
@@ -528,11 +499,10 @@ html {
 .cv-section h3 {
   font-size: 1.15rem;
   color: #0f172a;
-  border-bottom: 2px solid #f59e0b;
+  border-bottom: 2px solid #3b82f6;
   padding-bottom: 4px;
   margin-bottom: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .cv-section p {
@@ -561,7 +531,6 @@ html {
 
 .cv-section ul {
   padding-left: 20px;
-  margin-top: 5px;
 }
 
 .cv-section li {
@@ -572,22 +541,13 @@ html {
 }
 
 .cv-link-inline {
-  color: #f59e0b;
+  color: #3b82f6;
   font-weight: 600;
   text-decoration: none;
 }
 
-.cv-link-inline:hover {
-  text-decoration: underline;
-}
-
-.cv-active {
-  background: linear-gradient(135deg, #f59e0b 0%, #eab308 100%) !important;
-  color: #0b0f19 !important;
-}
-
 /* ==========================================================================
-   9. FOOTER & ATURAN CETAK (PRINT SETUP)
+   9. FOOTER
    ========================================================================== */
 .footer {
   text-align: center;
@@ -597,11 +557,13 @@ html {
   margin-top: 40px;
 }
 
+.dark-theme .footer { background: #070a12; border-color: #1e293b; color: #475569; }
+.light-theme .footer { background: #f1f5f9; border-color: #e2e8f0; color: #94a3b8; }
+
 /* ==========================================================================
-   10. RESPONSIF MOBILE PREMIUM (MEDIA QUERIES FOR SMARTPHONES)
+   10. OPTIMALISASI MOBILE RESPONSIVE (SMARTPHONE PERFECT)
    ========================================================================== */
 @media screen and (max-width: 768px) {
-  /* Atur padding container agar tidak terlalu mepet ke pinggir layar HP */
   .container {
     width: 92%;
   }
@@ -610,21 +572,21 @@ html {
     padding: 50px 0;
   }
 
-  /* 1. Navbar Mobile Layout */
+  /* Susun navbar vertikal di HP agar tidak berdempetan */
   .nav-container {
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
     text-align: center;
   }
 
   .nav-menu {
-    gap: 15px; /* Kurangi jarak antar menu agar muat satu baris di HP */
+    gap: 12px;
     flex-wrap: wrap;
     justify-content: center;
   }
 
   .nav-link {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     padding: 4px 0;
   }
 
@@ -632,13 +594,13 @@ html {
     padding: 4px 12px !important;
   }
 
-  /* 2. Hero Section Mobile */
+  /* Sesuaikan ukuran font Hero agar pas layar HP */
   .hero-section {
     padding: 40px 0 60px 0;
   }
 
   .hero-section h1 {
-    font-size: 2.2rem; /* Perkecil ukuran nama agar tidak terpotong */
+    font-size: 2.2rem;
     letter-spacing: -0.5px;
   }
 
@@ -651,7 +613,6 @@ html {
     line-height: 1.5;
   }
 
-  /* 3. Tombol Sosial Media Berikon di HP */
   .social-links {
     gap: 10px;
   }
@@ -662,14 +623,8 @@ html {
     gap: 6px;
   }
 
-  .svg-icon {
-    width: 16px;
-    height: 16px;
-  }
-
-  /* 4. Sesi Keahlian (Skills) & Project Card Mobile */
   .skills-container {
-    grid-template-columns: 1fr; /* Paksa menjadi 1 kolom ke bawah di HP */
+    grid-template-columns: 1fr;
     gap: 15px;
   }
 
@@ -681,20 +636,15 @@ html {
     font-size: 1.4rem;
   }
 
-  .project-desc {
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-
-  /* 5. Tampilan Kertas CV Digital di HP (Menghilangkan efek kaku desktop) */
+  /* Struktur Kertas CV Menyesuaikan Layar Sentuh */
   .cv-paper {
-    padding: 25px 15px; /* Kurangi padding kertas yang tebal */
+    padding: 25px 15px;
     border-radius: 8px;
-    box-shadow: none; /* Hilangkan shadow tebal di HP agar clean */
+    box-shadow: none;
   }
 
   .cv-top {
-    flex-direction: column; /* Foto CV pindah ke atas teks info di HP */
+    flex-direction: column;
     text-align: center;
     gap: 15px;
   }
@@ -708,32 +658,13 @@ html {
     font-size: 1.8rem;
   }
 
-  .cv-info-side h3 {
-    font-size: 1rem;
-  }
-
-  .cv-meta {
-    font-size: 0.8rem;
-  }
-
-  .cv-section h3 {
-    font-size: 1rem;
-  }
-
   .cv-item-title {
-    flex-direction: column; /* Pisahkan Posisi Kerja dan Tahun menjadi baris baru */
+    flex-direction: column;
     gap: 2px;
-  }
-  
-  .cv-item-title span {
-    font-size: 0.8rem;
-    color: #64748b;
   }
 }
 
-.dark-theme .footer { background: #070a12; border-color: #1e293b; color: #475569; }
-.light-theme .footer { background: #f1f5f9; border-color: #e2e8f0; color: #94a3b8; }
-
+/* Pengaturan Cetak Dokumen */
 @media print {
   .navbar, .cv-header-action, .footer, .toggle-btn {
     display: none !important;
@@ -746,8 +677,5 @@ html {
     padding: 0 !important;
     box-shadow: none !important;
     border: none !important;
-  }
-  .svg-icon {
-    fill: #000000 !important;
   }
 }
