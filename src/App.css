@@ -597,6 +597,140 @@ html {
   margin-top: 40px;
 }
 
+/* ==========================================================================
+   10. RESPONSIF MOBILE PREMIUM (MEDIA QUERIES FOR SMARTPHONES)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  /* Atur padding container agar tidak terlalu mepet ke pinggir layar HP */
+  .container {
+    width: 92%;
+  }
+  
+  .section {
+    padding: 50px 0;
+  }
+
+  /* 1. Navbar Mobile Layout */
+  .nav-container {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .nav-menu {
+    gap: 15px; /* Kurangi jarak antar menu agar muat satu baris di HP */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 4px 0;
+  }
+
+  .cv-link {
+    padding: 4px 12px !important;
+  }
+
+  /* 2. Hero Section Mobile */
+  .hero-section {
+    padding: 40px 0 60px 0;
+  }
+
+  .hero-section h1 {
+    font-size: 2.2rem; /* Perkecil ukuran nama agar tidak terpotong */
+    letter-spacing: -0.5px;
+  }
+
+  .typing-box {
+    font-size: 1.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* 3. Tombol Sosial Media Berikon di HP */
+  .social-links {
+    gap: 10px;
+  }
+
+  .social-icon-btn {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    gap: 6px;
+  }
+
+  .svg-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* 4. Sesi Keahlian (Skills) & Project Card Mobile */
+  .skills-container {
+    grid-template-columns: 1fr; /* Paksa menjadi 1 kolom ke bawah di HP */
+    gap: 15px;
+  }
+
+  .showcase-card {
+    padding: 25px 20px;
+  }
+
+  .showcase-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .project-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* 5. Tampilan Kertas CV Digital di HP (Menghilangkan efek kaku desktop) */
+  .cv-paper {
+    padding: 25px 15px; /* Kurangi padding kertas yang tebal */
+    border-radius: 8px;
+    box-shadow: none; /* Hilangkan shadow tebal di HP agar clean */
+  }
+
+  .cv-top {
+    flex-direction: column; /* Foto CV pindah ke atas teks info di HP */
+    text-align: center;
+    gap: 15px;
+  }
+
+  .cv-avatar {
+    width: 90px;
+    height: 90px;
+  }
+
+  .cv-info-side h1 {
+    font-size: 1.8rem;
+  }
+
+  .cv-info-side h3 {
+    font-size: 1rem;
+  }
+
+  .cv-meta {
+    font-size: 0.8rem;
+  }
+
+  .cv-section h3 {
+    font-size: 1rem;
+  }
+
+  .cv-item-title {
+    flex-direction: column; /* Pisahkan Posisi Kerja dan Tahun menjadi baris baru */
+    gap: 2px;
+  }
+  
+  .cv-item-title span {
+    font-size: 0.8rem;
+    color: #64748b;
+  }
+}
+
 .dark-theme .footer { background: #070a12; border-color: #1e293b; color: #475569; }
 .light-theme .footer { background: #f1f5f9; border-color: #e2e8f0; color: #94a3b8; }
 
